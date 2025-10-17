@@ -54,7 +54,7 @@ const deleteContact = async (req, res) => {
     const { id } = req.params;
     try {
         await contactosModel.deleteContact(id);
-        res.json({ message: 'Contacto eliminado' });
+        res.json({ message: 'Contacto eliminado correctamente' });
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar el contacto' });
     }
