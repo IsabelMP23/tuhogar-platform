@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
 const propiedadRoutes = require('./routes/propiedadRoutes');
+const usuarioRoutes = require('./routes/usuariosRoutes');
 app.use(express.json());
 
 // Rutas
 app.use('/api/propiedades', propiedadRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
