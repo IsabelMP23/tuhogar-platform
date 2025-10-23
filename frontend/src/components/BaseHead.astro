@@ -1,0 +1,15 @@
+---
+const { title } = Astro.props;
+---
+
+<title>{title ? `${title} | TuHogar` : 'TuHogar - Encuentra tu propiedad ideal'}</title>
+
+<meta name="description" content="TuHogar: Compra, renta y vende propiedades en Guadalajara. Encuentra tu hogar ideal con nosotros.">
+<meta name="author" content="TuHogar">
+<meta name="keywords" content="bienes raíces, casas, departamentos, renta, venta, TuHogar, Guadalajara">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="/src/styles/global.css">
+<meta property="og:title" content={title || 'TuHogar'}>
+<meta property="og:description" content="Compra, renta o vende propiedades con TuHogar. Atención personalizada en Guadalajara.">
+<meta property="og:image" content="/images/og-image.jpg">
+<meta property="og:type" content="website">

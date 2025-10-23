@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #be3739;
+  --secondary-color: #333439;
+  --font-family: "Golos Text", sans-serif;
+  --background-color: #fbfbfb;
+  --title: #9d866e;
+  --text-color: #000000;
+  --gradient: linear-gradient(to right, #333439 19%, #482222 75%, #823132 100%);
+  --button-color: #333439;
+  --button-hover-color: #505261;
+  --button-text-color: #ffffff;
+  --border-radius: 10px;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--title);
+}
+
+button {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+}
