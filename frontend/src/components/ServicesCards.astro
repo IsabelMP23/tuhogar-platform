@@ -1,0 +1,58 @@
+---
+import CardCarousel from "./CardCarousel.astro";
+---
+
+<section class="max-w-7xl md:max-w-11/12 mx-auto py-5 flex flex-col items-center" aria-labelledby="sobre-nosotros-encabezado">
+    <CardCarousel>
+      {
+        [1, 2, 3].map((_, i) => (
+          <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col h-80 p-6 ">
+            <img
+              src={`/assets/property${i + 1}.jpg`}
+              alt={`Propiedad ${i + 1}`}
+              class="w-20 h-20 object-cover rounded-md bg-gray-400"
+            />
+            <article class="w-full flex flex-col justify-around">
+              <h3 class="text-lg font-bold mt-3">Encabezado </h3>
+              <p class="text-gray-600 text-sm line-clamp-2 mb-2">
+                Descripción del servicio ofrecido por la empresa.
+              </p>
+              <ul class="space-y-2 list-disc list-inside">
+                <li class="text-gray-600 text-sm">Característica 1</li>
+                <li class="text-gray-600 text-sm">Característica 2</li>
+                <li class="text-gray-600 text-sm">Característica 3</li>
+              </ul>
+            </article>
+          </div>
+        ))
+      }
+    </CardCarousel>
+    <CardCarousel>
+      {
+        [1, 2, 3].map((_, i) => (
+          <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col h-80 p-6 ">
+            <img
+              src={`/assets/property${i + 1}.jpg`}
+              alt={`Propiedad ${i + 1}`}
+              class="w-20 h-20 object-cover rounded-md bg-gray-400"
+            />
+            <article class="w-full flex flex-col justify-around">
+              <h3 class="text-lg font-bold mt-3">Encabezado </h3>
+              <p class="text-gray-600 text-sm line-clamp-2 mb-2">
+                Descripción del servicio ofrecido por la empresa.
+              </p>
+              <ul class="space-y-2 list-disc list-inside">
+                <li class="text-gray-600 text-sm">Característica 1</li>
+                <li class="text-gray-600 text-sm">Característica 2</li>
+                <li class="text-gray-600 text-sm">Característica 3</li>
+              </ul>
+            </article>
+          </div>
+        ))
+      }
+    </CardCarousel>
+    <a href="/contactanos" class="btn mt-4 px-6 py-3"
+      >Contactanos</a
+    >
+  </div>
+</section>
