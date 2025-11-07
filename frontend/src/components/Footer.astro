@@ -1,29 +1,33 @@
-<footer>
-  <div class="footer-bottom">
-    <p>© {new Date().getFullYear()} TuHogar. Todos los derechos reservados.</p>
+---
+import Facebook from '../icons/facebook.svg';
+import Instagram from '../icons/insta.svg';
+import Twitter from '../icons/twitter.svg';
+---
+<footer class="bg-(--secondary-color) text-white py-8 z-1">
+  <div class="max-w-7xl md:max-w-11/12 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
+    <section class="flex flex-col sm:flex-row justify-between md:items-center pb-4 mb-6 border-b-2 border-white/20">
+      <aside class="flex flex-col space-y-2 mb-4 sm:mb-0">
+         <p class="text-xl font-bold cursor-pointer text-white mb-4">TuHogar</p>
+        <div class="flex space-x-4 text-white/50">
+          <a href=""> <Facebook width={20} height={20} /> </a>
+          <a href="#" class="hover:text-(--title)"><Instagram width={20} height={20} /></a>
+          <a href="#" class="hover:text-(--title)"><Twitter width={20} height={20} /></a>
+        </div>
+      </aside>
+
+      <article
+        class="flex flex-row space-x-6 justify-between text-white/70 text-sm md:text-base"
+      >
+        <a href="/" class="hover:text-(--title)">Inicio</a>
+        <a href="/propiedades" class="hover:text-(--title)">Propiedades</a>
+        <a href="/contacto" class="hover:text-(--title)">Contacto</a>
+        <a href="/acerca-de" class="hover:text-(--title)">Acerca de</a>
+      </article>
+    </section>
+
+    <section class="text-center">
+      <p class="text-sm">© 2025 TuHogar. Todos los derechos reservados.</p>
+    </section>
   </div>
 </footer>
 
-<style>
-  footer {
-    background: var(--secondary-color);
-    color: white;
-    padding: 3rem 2rem 1rem;
-    font-family: var(--font-family);
-  }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    font-size: 0.9rem;
-    opacity: 0.85;
-  }
-
-  @media (max-width: 600px) {
-    footer {
-      text-align: center;
-    }
-  }
-</style>

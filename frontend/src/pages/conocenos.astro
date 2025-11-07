@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import Image from "astro/components/Image.astro";
+import AboutMission from "../components/AboutMission.astro";
+import AboutVision from "../components/AboutVision.astro";
+import AboutValues from "../components/AboutValues.astro";
+import HeroTitle from "../components/HeroTitle.astro";
+---
+
+<BaseLayout title="Conócenos">
+  <section
+    class="w-full max-w-7xl mx-auto py-20"
+    aria-labelledby="conocenos-encabezado"
+  >
+    <div
+      class="flex flex-col justify-center items-center gap-4 md:flex-row md:gap-30 px-3 sm:px-6 lg:px-8"
+    >
+      <h1 id="conocenos-encabezado" class="text-4xl font-bold">Conócenos</h1>
+      <p class="p-0 text-center md:text-left">
+        ¿Tienes preguntas o necesitas más información? Nuestro equipo de
+        atención al cliente está aquí para ayudarte. No dudes en ponerte en
+        contacto con nosotros a través del siguiente formulario o por teléfono.
+      </p>
+    </div>
+  </section>
+  <Image
+    src={"/assets/callcenter.jpg"}
+    alt="Compra de propiedades"
+    width={1200}
+    height={400}
+    format="avif"
+    loading="lazy"
+    class="w-full h-auto md:max-h-92 object-cover bg-gray-400"
+  />
+  <section
+    class="w-full max-w-7xl mx-auto py-20"
+    aria-labelledby="conocenos-historia"
+  >
+    <div
+      class="flex flex-col justify-center items-center gap-4 md:flex-row md:gap-30 px-3 sm:px-6 lg:px-8"
+    >
+      <article>
+        <h2
+          id="sobre-nosotros-encabezado"
+          class="text-lg font-bold mb-2 text-white"
+        >
+          Sobre Nosotros
+        </h2>
+        <h3 class="text-3xl font-semibold mb-11">Nuestra Historia</h3>
+      </article>
+      <article class="flex-1">
+
+        <p class="mb-5">
+          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
+          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
+        </p>
+        <p class="mb-5">
+          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
+          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
+          consectetuer adipiscing elit. lore Consequat praesent nec primis
+        </p>
+        <button class="btn">Leer más</button>
+      </article>
+    </div>
+  </section>
+
+  <AboutMission />
+  <AboutVision />
+  <AboutValues />
+  <HeroTitle
+    title="Nuestro Equipo"
+    text="Conoce a los profesionales que hacen posible TuHogar."
+    image="/assets/team1.jpg"
+   />
+
+
+
+</BaseLayout>
