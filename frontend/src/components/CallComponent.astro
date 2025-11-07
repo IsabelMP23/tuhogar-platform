@@ -1,0 +1,38 @@
+---
+import Image from "astro/components/Image.astro";
+---
+
+<section class="max-w-7xl mx-auto py-20" aria-labelledby="sobre-nosotros-encabezado">
+  <div
+    class="flex flex-col justify-center items-center gap-20 md:gap-8 md:flex-row px-3 sm:px-6 lg:px-8"
+  >
+    <article class="flex flex-row gap-4 rounded-4xl shadow-2xl " style="background: var(--gradient);">
+        <Image
+        src={"/assets/callcenter.jpg"}
+        alt="Compra de propiedades"
+        width={900}
+        height={700}
+        format="avif"
+        loading="lazy"
+        class="w-full h-auto object-cover rounded-2xl z-10 bg-gray-400"
+      />
+      <aside class="flex flex-col justify-center items-start p-6 lg:p-12">
+        <h2
+          id="sobre-nosotros-encabezado"
+          class="text-lg font-bold mb-2"
+        >
+          Contáctanos
+        </h2>
+        <h3 class="text-3xl font-semibold mb-3 text-white">Podemos encontrar la casa de tus sueños</h3>
+        <p class="text-white text-sm">
+          ¿Tienes preguntas o necesitas asistencia? Nuestro equipo está listo
+          para ayudarte a encontrar la propiedad perfecta. Llámanos hoy mismo y
+          descubre cómo podemos hacer realidad tu sueño de hogar.
+        </p>
+        <button class="btn-vr mt-4 px-6 py-3 rounded-lg font-bold">Llámanos</button>
+      </aside>
+
+      
+    </article>
+  </div>
+</section>

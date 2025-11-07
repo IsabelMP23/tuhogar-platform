@@ -1,0 +1,92 @@
+---
+const { children } = Astro.props;
+---
+
+<section class="overflow-visible">
+  <div
+    class="carousel-scroll flex gap-4 snap-x snap-mandatory scroll-smooth overflow-x-auto p-4 cursor-grab"
+  >
+    <slot />
+  </div>
+</section>
+
+<style>
+  .carousel-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .carousel-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-scroll img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -moz-user-select: none;
+  }
+  .cursor-grab { cursor: grab; }
+  .cursor-grabbing { cursor: grabbing; }
+</style>
+
+<script is:inline>
+  (function () {
+    function setupCarousels() {
+      document.querySelectorAll('.carousel-scroll').forEach((el) => {
+        if (el.dataset.carouselInit === 'true') return;
+        el.dataset.carouselInit = 'true';
+
+        const items = el.children.length;
+        if (items <= 3) {
+          el.classList.add('xl:grid', 'xl:grid-cols-3', 'xl:overflow-visible', 'cursor-default');
+        }
+
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        el.addEventListener('mousedown', (e) => {
+          isDown = true;
+          el.classList.add('cursor-grabbing');
+          e.preventDefault();
+          startX = e.pageX - el.getBoundingClientRect().left + el.scrollLeft;
+          scrollLeft = el.scrollLeft;
+        });
+
+        el.addEventListener('mouseleave', () => {
+          isDown = false;
+          el.classList.remove('cursor-grabbing');
+        });
+
+        el.addEventListener('mouseup', () => {
+          isDown = false;
+          el.classList.remove('cursor-grabbing');
+        });
+
+        el.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - el.getBoundingClientRect().left + el.scrollLeft;
+          const walk = (x - startX) * 1;
+          el.scrollLeft = scrollLeft - walk;
+        });
+        let touchStartX = 0;
+        let touchScrollLeft = 0;
+        el.addEventListener('touchstart', (e) => {
+          touchStartX = e.touches[0].pageX;
+          touchScrollLeft = el.scrollLeft;
+        }, { passive: true });
+        el.addEventListener('touchmove', (e) => {
+          const x = e.touches[0].pageX;
+          const walk = (x - touchStartX) * 1;
+          el.scrollLeft = touchScrollLeft - walk;
+        }, { passive: true });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', setupCarousels);
+    } else {
+      setupCarousels();
+    }
+  })();
+</script>

@@ -1,0 +1,16 @@
+---
+const { circles = [] }: { circles?: { size?: string; top?: string; bottom?: string; left?: string; right?: string }[] } = Astro.props;
+---
+
+<div class="absolute inset-0 pointer-events-none">
+    {
+        circles.map((circle) => (
+        <div
+            class="absolute rounded-full z-0"
+            style={`width:${circle.size ?? '100px'}; height:${circle.size ?? '100px'}; top:${circle.top ?? 'auto'}; bottom:${circle.bottom ?? 'auto'}; left:${circle.left ?? 'auto'}; right:${circle.right ?? 'auto'}; background: var(--gradient);`}
+        ></div>
+        ))
+    }
+
+</div>
+

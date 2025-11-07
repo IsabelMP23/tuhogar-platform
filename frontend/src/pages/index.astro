@@ -1,7 +1,16 @@
 ---
-import BaseLayout from '../layouts/baseLayout.astro';
+import BaseLayout from "../layouts/baseLayout.astro";
+import Hero from "../components/Hero.astro";
+import AboutUs from "../components/AboutUs.astro";
+import TopListings from "../components/TopListings.astro";
+import Reviews from "../components/Reviews.astro";
+import CallComponent from "../components/CallComponent.astro";
 ---
 
-<BaseLayout title="Inicio">
-  <p>Aqui ira el contenido de las páginas</p>
+<BaseLayout title="Inicio" HomeStyle>
+  <Hero />
+  <AboutUs />
+  <TopListings />
+  <CallComponent />
+  <Reviews />
 </BaseLayout>

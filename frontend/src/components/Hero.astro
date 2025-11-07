@@ -1,0 +1,54 @@
+---
+import HeroBg from "./HeroBg.astro";
+import CardCarousel from "./CardCarousel.astro";
+import mano from "../icons/mano.svg";
+
+const services = [
+  {
+    title: "Compra de Propiedades",
+    description:
+      "Encuentra la casa perfecta con la asesoría de nuestros expertos.",
+    image: "/icons/mano.svg",
+  },
+  {
+    title: "Venta de Propiedades",
+    description: "Publica y vende tu inmueble de forma rápida y segura.",
+    image: "/icons/venta.svg",
+  },
+  {
+    title: "Renta de Propiedades",
+    description: "Descubre opciones de renta adaptadas a tus necesidades.",
+    image: "/icons/renta.svg",
+  },
+];
+---
+
+<section class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8" aria-labelledby="hero">
+  <HeroBg />
+  <div
+    class="overflow-x-hidden flex flex-col h-full w-full justify-center items-start pt-30 pb-15 lg:pb-20"
+  >
+    <p class="text-5xl lg:text-6xl font-bold text-black md:mb-4">ENCUENTRA TU SUEÑO</p>
+    <p class="mt-4 text-base md:max-w-96 lg:max-w-2xl lg:mb-8 text-black  mb-4">
+      Encuentra las mejores propiedades y recibe asesoría personalizada para comprar, vender o rentar tu hogar ideal.
+    </p>
+    <button class="btn px-6 py-3 transition">Catálogo</button>
+  </div>
+  <CardCarousel>
+    {
+      services.map(({ title, description, image }, i) => (
+        <div
+          class="bg-white rounded-lg shadow-md min-w-[16rem] md:max-w-3/4 h-72 flex flex-col items-center p-6"
+        >
+          <img
+            src={image}
+            alt={title}
+            class="w-24 h-24 object-cover bg-gray-400 rounded-2xl"
+          />
+          <h3 class="text-xl font-semibold mt-3">{title}</h3>
+          <p class="text-gray-600 text-sm text-center">{description}</p>
+        </div>
+      ))
+    }
+  </CardCarousel>
+</section>
