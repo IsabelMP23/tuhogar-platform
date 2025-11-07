@@ -1,10 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "tailwindcss";
 
 :root {
   --primary-color: #be3739;
@@ -17,29 +12,22 @@
   --button-color: #333439;
   --button-hover-color: #505261;
   --button-text-color: #ffffff;
-  --border-radius: 10px;
+  --border-radius: 20px;
 }
 
 body {
   font-family: var(--font-family);
   background-color: var(--background-color);
   color: var(--text-color);
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   font-weight: 700;
   color: var(--title);
 }
 
-button {
+.btn {
   background-color: var(--button-color);
   color: var(--button-text-color);
   border: none;
@@ -49,6 +37,21 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.btn:hover {
   background-color: var(--button-hover-color);
+}
+
+.btn-vr{
+  background-color: var(--button-text-color);
+  color: var(--button-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-vr:hover{
+  background-color: var(--button-hover-color);
+  color: var(--button-text-color);
 }
