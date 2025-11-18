@@ -1,6 +1,38 @@
 ---
 import CardCarousel from "../components/CardCarousel.astro";
 import StarRating from "../components/StartRating.astro";
+import Image from "astro/components/Image.astro";
+
+const reviews = [
+  {
+    title: "Excelente servicio y atención",
+    content:
+      "La experiencia con TuHogar fue increíble. Me ayudaron a encontrar la casa perfecta y el proceso fue muy sencillo. ¡Recomendados al 100%!",
+    rating: 5,
+    author: "Jese Leos",
+    date: "2014-08-16 19:00",
+    img: "https://media.nngroup.com/media/people/photos/20211213_Vegas-tanner.jpg.256x256_q75_autocrop_crop-smart_upscale.jpg",
+  },
+  {
+    title: "Gran variedad de propiedades",
+    content:
+      "Encontré una gran variedad de opciones que se ajustaban a mi presupuesto y necesidades. El equipo fue muy profesional y atento.",
+    rating: 4,
+    author: "Maria Gomez",
+    date: "2015-05-10 14:30",
+    img: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    title: "Proceso de compra sin complicaciones",
+    content:
+      "El proceso de compra fue muy claro y sin complicaciones. Me guiaron en cada paso y resolvieron todas mis dudas rápidamente.",
+    rating: 5,
+    author: "Carlos Ramirez",
+    date: "2016-11-22 10:15",
+    img: "https://xsgames.co/randomusers/assets/avatars/male/6.jpg",
+  },
+];
+
 ---
 
 <section class="max-w-7xl  mx-auto py-20" aria-labelledby="sobre-nosotros-encabezado">
@@ -16,33 +48,34 @@ import StarRating from "../components/StartRating.astro";
     <h3 class="text-3xl font-semibold mb-2">Comentarios</h3>
     <CardCarousel>
       {
-        [1, 2, 3].map((_, i) => (
-          <div class="bg-white rounded-lg shadow-md min-w-[20rem] flex flex-col  h-60 p-6">
-            <div class="mb-4">
+        reviews.map((review, i) => (
+          <div class="bg-white rounded-lg shadow-md min-w-[20rem] flex flex-col justify-center h-60 p-4">
+            <div class="mb-2">
               <h4 class="text-lg font-semibold mb-2">
-                Excelente servicio y atención
+                {review.title}
               </h4>
               <p class="text-sm line-clamp-4">
-                La experiencia con TuHogar fue increíble. Me ayudaron a
-                encontrar la casa perfecta y el proceso fue muy sencillo.
-                ¡Recomendados al 100%!
+                {review.content}
               </p>
             </div>
-            <StarRating rating={5} />
-            <div class="flex items-center mb-4">
-              <img
+            <StarRating rating={review.rating } />
+            <div class="flex items-center">
+              <Image
                 class="w-10 h-10 me-4 rounded-full bg-gray-400"
-                src="/docs/images/people/profile-picture-5.jpg"
-                alt=""
+                src={review.img}
+                alt={`Avatar of ${review.author}`}
+                height={10}
+                width={10}
+                loading="lazy"
               />
               <div class="font-medium ">
                 <p>
-                  Jese Leos{" "}
+                  {review.author}{" "}
                   <time
-                    datetime="2014-08-16 19:00"
+                    datetime={review.date}
                     class="block text-sm text-gray-500 dark:text-gray-400"
                   >
-                    August 2014
+                    {new Date(review.date).toLocaleString("default", { month: "long", year: "numeric" })}
                   </time>
                 </p>
               </div>

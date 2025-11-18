@@ -1,38 +1,39 @@
 ---
 import Image from "astro/components/Image.astro";
 ---
-  <section
-    class="w-full max-w-7xl mx-auto py-20"
-    aria-labelledby="conocenos-historia"
+
+<section
+  class="w-full max-w-7xl mx-auto py-20"
+  aria-labelledby="conocenos-historia"
+>
+  <div
+    class="flex flex-col justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
   >
-    <div
-      class="flex flex-col justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
-    >     
-      <article class="flex-1">
-          <h2
-          id="sobre-nosotros-encabezado"
-          class="text-lg font-bold mb-2 text-white"
-        >
-          Sobre Nosotros
-        </h2>
-        <h3 class="text-3xl font-semibold mb-10">Nuestra Historia</h3>
-        <p class="mb-5">
-          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
-          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
-        </p>
-        <p class="mb-10">
-          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
-          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
-          consectetuer adipiscing elit. lore Consequat praesent nec primis
-        </p>
-        <button class="btn">Leer más</button>
-      </article>
-        <Image
-            src="/assets/team2.jpg"
-            alt="Equipo 2"
-            width={500}
-            height={300}
-            class="rounded-lg object-cover bg-gray-400 shadow-lg flex-1"
-          />
-    </div>
-  </section>
+    <article class="flex-1">
+      <h2
+        id="sobre-nosotros-encabezado"
+        class="text-lg font-bold mb-2 text-white"
+      >
+        Nuestra Misión
+      </h2>
+      <h3 class="text-3xl font-semibold mb-10">
+        Guiar la busqueda de tu propiedad ideal.
+      </h3>
+      <p class="mb-5">
+        Nos comprometemos a ofrecer un servicio personalizado y cercano,
+        escuchando las necesidades de cada cliente y proporcionando opciones que
+        se adapten a sus sueños y estilo de vida.
+      </p>
+      <p class="font-semibold">
+        Mejoraremos la experiencia de compra de inmuebles!
+      </p>
+    </article>
+    <Image
+      src="/assets/team2.jpg"
+      alt="Equipo 2"
+      width={500}
+      height={300}
+      class="rounded-lg object-cover bg-gray-400 shadow-lg flex-1"
+    />
+  </div>
+</section>

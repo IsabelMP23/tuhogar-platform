@@ -1,19 +1,25 @@
 ---
 const { HomeStyle } = Astro.props;
 ---
+
 <header class="z-1">
   <nav
-    class={`relative after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px ${HomeStyle ? '' : 'bg-(--secondary-color)'}`}
+    class={`relative after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px ${HomeStyle ? "" : "bg-(--secondary-color)"}`}
   >
     <div class="mx-auto max-w-7xl md:max-w-11/12 px-3 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div
-          class="flex flex-1 items-center justify-start"
-        >
-          <div class="flex shrink-0 items-center">
-            <p class={`text-xl font-bold cursor-pointer ${HomeStyle ? 'text-(--secondary-color) text-shadow' : 'text-white'}`}>TuHogar</p>
-          </div>
-          <div class={`hidden sm:ml-auto sm:block bg-white rounded-4xl px-3 py-1 ${HomeStyle ? 'shadow-xl/30' : ''}`}>
+      <div class="relative z-20 flex h-16 items-center justify-between">
+        <div class="flex flex-1 items-center justify-start">
+          <a href="/" class="flex shrink-0 items-center" aria-label="Inicio">
+            <p
+              id="Logo"
+              class={`text-xl font-bold cursor-pointer ${HomeStyle ? "text-(--secondary-color) text-shadow" : "text-white"}`}
+            >
+              TuHogar
+            </p>
+          </a>
+          <div
+            class={`hidden sm:ml-auto sm:block bg-white rounded-4xl px-3 py-1 ${HomeStyle ? "shadow-xl/30" : ""}`}
+          >
             <div class="flex space-x-4">
               <a
                 href="/"
@@ -38,22 +44,27 @@ const { HomeStyle } = Astro.props;
               >
             </div>
           </div>
-          <div class="hidden sm:block  items-center sm:ml-auto">
-            <a href="/contactanos" class={`inline-flex btn items-center justify-center rounded-md p-2 ${HomeStyle ? 'shadow-lg/30' : ''}`}>
-               Contáctanos
+          <div class="hidden sm:block items-center sm:ml-auto">
+            <a 
+              id="btnContactanos"
+              href="/contactanos"
+              class={`inline-flex btn items-center justify-center rounded-md p-2 ${HomeStyle ? "shadow-lg/30" : ""}`}
+            >
+              Contáctanos
             </a>
           </div>
         </div>
       </div>
       <div class="absolute inset-y-0 right-4 flex items-center sm:hidden">
-        
         <button
           type="button"
-          class="btn relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
+          id="mobile-menu-btn"
+          class="btn relative z-20 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
         >
           <span class="absolute -inset-0.5"></span>
           <span class="sr-only">Open main menu</span>
           <svg
+            id="IconOpen"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -68,13 +79,14 @@ const { HomeStyle } = Astro.props;
               stroke-linejoin="round"></path>
           </svg>
           <svg
+            id="IconClose"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="1.5"
             data-slot="icon"
             aria-hidden="true"
-            class="size-6 not-in-aria-expanded:hidden"
+            class="size-6 hidden"
           >
             <path
               d="M6 18 18 6M6 6l12 12"
@@ -85,31 +97,53 @@ const { HomeStyle } = Astro.props;
       </div>
     </div>
 
-    <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
-      <div class="space-y-1 px-2 pt-2 pb-3">
+    <el-disclosure
+      id="mobile-menu"
+      hidden
+      class="peer block sm:hidden absolute w-full right-0 top-0 overflow-hidden transition-all duration-300 pt-20 bg-(--secondary-color) shadow-lg rounded-bl-lg"
+    >
+      <div class="space-y-1 px-2 pt-2 pb-3 z-10">
         <a
-          href="#"
+          href="/"
           aria-current="page"
           class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white"
           >Inicio</a
         >
         <a
-          href="#"
+          href="/propiedades"
           class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
           >Propiedades</a
         >
         <a
-          href="#"
+          id="btnServiciosMobile"
+          href="/servicios"
           class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
           >Servicios</a
         >
         <a
-          href="#"
+          href="/conocenos"
           class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
           >Conócenos</a
+        >
+        <a
+          href="/contactanos"
+          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+          >Contáctanos</a
         >
       </div>
     </el-disclosure>
   </nav>
 </header>
 
+<script>
+  const btn = document.getElementById("mobile-menu-btn") as HTMLButtonElement;
+  const menu = document.getElementById("mobile-menu") as HTMLElement;
+  const iconOpen = btn.querySelector("svg#IconOpen") as SVGElement;
+  const iconClose = btn.querySelector("svg#IconClose") as SVGElement;
+
+  btn.addEventListener("click", () => {
+    menu.toggleAttribute("hidden");
+    iconOpen.classList.toggle("hidden");
+    iconClose.classList.toggle("hidden");
+  });
+</script>

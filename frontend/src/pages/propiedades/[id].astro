@@ -1,0 +1,96 @@
+---
+export const prerender = false;
+import BaseLayout from "../../layouts/baseLayout.astro";
+import { fetchPropiedadById } from "../../lib/api";
+import Carousel from "../../components/Carousel.astro";
+import CardExpandible from "../../components/CardExpandible.astro";
+import CarouselPlaceholder from "../../components/CarouselPlaceholder.astro";
+
+const { id } = Astro.params;
+if (!id) {
+  throw new Error("ID no proporcionado");
+}
+const propiedad = await fetchPropiedadById(id);
+
+if (!propiedad) {
+  throw new Error("Propiedad no encontrada");
+}
+
+const keysAMostrar = [
+  { key: "id_propiedad", label: "ID del Inmueble", icon: "fa-regular fa-file" },
+  { key: "estado", label: "Estado", icon: "fa-solid fa-sign-hanging" },
+  {
+    key: "area_construida",
+    label: "Área construida",
+    icon: "fa-solid fa-house",
+  },
+  { key: "cuartos", label: "Cuartos", icon: "fa-solid fa-door-open" },
+  { key: "banos", label: "Baños", icon: "fa-solid fa-bath" },
+  { key: "pisos", label: "Pisos", icon: "fa-solid fa-building" },
+  { key: "tipo", label: "Tipo", icon: "fa-solid fa-list" },
+  { key: "direccion", label: "Ubicación", icon: "fa-solid fa-location-dot" },
+];
+
+const tarjetas = [
+  { titulo: "Descripción", contenido: propiedad.descripcion },
+  { titulo: "Amenidades", contenido: propiedad.amenidades },
+  { titulo: "Servicios", contenido: propiedad.servicios },
+];
+---
+
+<BaseLayout title={propiedad.titulo}>
+  <main class="w-full max-w-7xl mx-auto p-6">
+    <section aria-details="Imagen principal y título de la propiedad">
+      <div class="flex flex-col lg:flex-row gap-15 p-4 md:p-6 lg:p-8">
+        <Carousel server:defer propiedad={propiedad}>
+          <CarouselPlaceholder slot="fallback" />
+        </Carousel>
+        
+
+        <article class="flex-1 flex flex-col justify-between">
+          <h1 class="text-4xl font-bold tracking-wide">{propiedad.titulo}</h1>
+          <div class="flex flex-col">
+            <p class="text-5xl font-semibold mb-6 tracking-wide">
+              ${propiedad.precio.toLocaleString()}
+              <span class="text-3xl font-semibold">MXN</span>
+            </p>
+            <button class="btn"> Contactar al agente </button>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-4 mt-6">Características</h3>
+            <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {
+                keysAMostrar.map(({ key, label, icon }) => (
+                  <li
+                    class={`flex items-center gap-3 ${key === "direccion" ? "col-span-2" : ""}`}
+                  >
+                    <i class={`${icon} text-4xl`} />
+                    <div class="flex flex-col">
+                      <span class="text-zinc-400 font-medium text-sm uppercase">
+                        {label}
+                      </span>
+                      <p class="text-lg font-semibold">
+                        {key === "direccion"
+                          ? `${propiedad.direccion}, ${propiedad.colonia}, ${propiedad.ciudad}, C.P. ${propiedad.codigo_postal}`
+                          : propiedad[key as keyof typeof propiedad]}
+                      </p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section aria-describedby="detalles de la propiedad">
+      <article class="flex flex-col gap-3 p-4 md:p-6 lg:p-8">
+        {
+          tarjetas.map(({ titulo, contenido }) => (
+            <CardExpandible titulo={titulo} contenido={contenido} />
+          ))
+        }
+      </article>
+    </section>
+  </main>
+</BaseLayout>
