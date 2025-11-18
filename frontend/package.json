@@ -9,8 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^9.0.0",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.15.3",
+    "chromedriver": "^142.0.2",
+    "flowbite": "^4.0.0",
+    "leaflet": "^1.9.4",
+    "selenium-webdriver": "^4.38.0",
     "tailwindcss": "^4.1.16"
   }
 }

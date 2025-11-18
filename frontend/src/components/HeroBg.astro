@@ -1,10 +1,26 @@
-<div class="herobg absolute inset-0 -z-10  from-blue-100 to-white h-fit pb-15 sm:pb-20 overflow-hidden">
-    <div class="h-[550px] bg-gray-400 rounded-b-3xl overflow-hidden">
-    </div>
+---
+import Image from "astro/components/Image.astro";
+---
+
+<div
+  class="herobg absolute inset-0 -z-10 from-blue-100 to-white h-fit pb-15 sm:pb-20 overflow-hidden"
+>
+  <div class="h-[550px] rounded-b-3xl  overflow-hidden relative">
+    <Image
+      src="/images/hero.webp"
+      alt="Fondo Hero"
+      class="w-full h-full mx-auto object-cover"
+      width={1920}
+      height={1080}
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black/15"></div>
+  </div>
+   
 </div>
 
 <style>
-.herobg {
+  .herobg {
     background-image: var(--gradient);
-}
+  }
 </style>

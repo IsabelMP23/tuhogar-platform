@@ -1,0 +1,26 @@
+---
+
+export interface Props {
+  titulo: string;
+  contenido: string | string[];
+}
+const { titulo, contenido } = Astro.props;
+---
+<details class="border border-gray-300 rounded-lg transition-shadow duration-200 hover:shadow-md">
+  <summary class="cursor-pointer bg-white p-4 rounded-lg font-medium text-lg hover:bg-gray-200 ">
+    {titulo}
+  </summary>
+  <div class="px-4 py-2">
+    {
+      Array.isArray(contenido) ? (
+        <ul class="list-disc list-inside space-y-1">
+          {contenido.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>{contenido}</p>
+      )
+    }
+  </div>
+</details>

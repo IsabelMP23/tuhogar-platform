@@ -1,0 +1,89 @@
+---
+const { propiedad } = Astro.props;
+import Image from "astro/components/Image.astro";
+---
+
+
+<article class="w-full flex-1">
+  <div class="relative w-full max-w-4xl mx-auto">
+    <div id="slider" class="relative overflow-hidden h-96  rounded-2xl">
+      {
+        propiedad.imagenes_adicionales.map((img: string, i: number) => (
+          <Image
+            src={img}
+            width={900}
+            height={600}
+            alt={`Imagen adicional ${i + 1} de la propiedad`}
+            class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              i === 0 ? "opacity-100" : "opacity-0"
+            }`}
+            data-slide={i}
+            loading="eager"
+          />
+        ))
+      }
+    </div>
+
+    <button
+      id="prev"
+      class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded-lg cursor-pointer hover:bg-black/70 hover:scale-110 transition"
+      >‹</button
+    >
+
+    <button
+      id="next"
+      class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded-lg cursor-pointer hover:bg-black/70 hover:scale-110 transition"
+      >›</button
+    >
+    <div class="flex justify-center mt-3 space-x-2 absolute bottom-2 left-1/2 -translate-x-1/2">
+      {
+        propiedad.imagenes_adicionales.map((_: unknown, i: number) => (
+          <button
+            class={`w-4 h-4 rounded-full cursor-pointer hover:bg-gray-700/70 hover:scale-110 transition ${
+              i === 0 ? "bg-gray-800" : "bg-gray-700/70"
+            }`}
+            data-dot={i}
+          />
+        ))
+      }
+    </div>
+  </div>
+</article>
+
+<script>
+  const slides = document.querySelectorAll("[data-slide]");
+  const dots = document.querySelectorAll("[data-dot]") as NodeListOf<HTMLButtonElement>;
+  const prev = document.getElementById("prev") as HTMLButtonElement;
+  const next = document.getElementById("next") as HTMLButtonElement;
+
+  let current = 0;
+
+  function showSlide(index: number) {
+    slides.forEach((s, i) => {
+      s.classList.toggle("opacity-100", i === index);
+      s.classList.toggle("opacity-0", i !== index);
+    });
+
+    dots.forEach((d, i: number) => {
+      d.classList.toggle("bg-gray-800", i === index);
+      d.classList.toggle("bg-gray-400", i !== index);
+    });
+
+    current = index;
+  }
+
+  next.onclick = () => {
+    showSlide((current + 1) % slides.length);
+  };
+
+  prev.onclick = () => {
+    showSlide((current - 1 + slides.length) % slides.length);
+  };
+
+  dots.forEach((dot) => {
+    dot.onclick = () => {
+      const i = Number(dot.getAttribute("data-dot"));
+      showSlide(i);
+    };
+  });
+</script>

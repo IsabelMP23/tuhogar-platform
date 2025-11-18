@@ -24,12 +24,12 @@ import HeroTitle from "../components/HeroTitle.astro";
     </div>
   </section>
   <Image
-    src={"/assets/callcenter.jpg"}
+    src={"/images/conocenos.webp"}
     alt="Compra de propiedades"
     width={1200}
     height={400}
     format="avif"
-    loading="lazy"
+    loading="eager"
     class="w-full h-auto md:max-h-92 object-cover bg-gray-400"
   />
   <section
@@ -39,27 +39,30 @@ import HeroTitle from "../components/HeroTitle.astro";
     <div
       class="flex flex-col justify-center items-center gap-4 md:flex-row md:gap-30 px-3 sm:px-6 lg:px-8"
     >
-      <article>
+      <article class="flex-1">
         <h2
           id="sobre-nosotros-encabezado"
           class="text-lg font-bold mb-2 text-white"
         >
           Sobre Nosotros
         </h2>
-        <h3 class="text-3xl font-semibold mb-11">Nuestra Historia</h3>
+        <h3 class="text-3xl font-semibold mb-11">Mejorando con cada paso.</h3>
       </article>
-      <article class="flex-1">
-
-        <p class="mb-5">
-          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
-          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
+      <article class="flex-2">
+        <p class="mb-5 font-bold">
+          Bomasa nació en 2024 con una visión clara: ofrecer un servicio
+          inmobiliario cercano, confiable y personalizado.
         </p>
         <p class="mb-5">
-          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
-          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
-          consectetuer adipiscing elit. lore Consequat praesent nec primis
+          Aunque somos un proyecto reciente, nuestra misión ha sido clara desde
+          el principio: acompañar a cada cliente en la búsqueda de su hogar
+          ideal, asegurándonos de que cada propiedad se ajuste perfectamente a
+          sus necesidades.
         </p>
-        <button class="btn">Leer más</button>
+        <p class="mb-5">
+          Actualmente, gestionamos más de 50 propiedades en la región, brindando
+          opciones diversas y de calidad.
+        </p>
       </article>
     </div>
   </section>
@@ -71,8 +74,5 @@ import HeroTitle from "../components/HeroTitle.astro";
     title="Nuestro Equipo"
     text="Conoce a los profesionales que hacen posible TuHogar."
     image="/assets/team1.jpg"
-   />
-
-
-
+  />
 </BaseLayout>

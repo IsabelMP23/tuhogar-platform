@@ -1,46 +1,51 @@
 ---
 import Image from "astro/components/Image.astro";
 ---
-  <section
-    class="w-full max-w-7xl mx-auto py-20"
-    aria-labelledby="conocenos-historia"
+
+<section
+  class="w-full max-w-7xl mx-auto py-20"
+  aria-labelledby="conocenos-historia"
+>
+  <div
+    class="flex flex-col-reverse justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
   >
-    <div
-      class="flex flex-col-reverse justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
-    >
-          <Image
-            src="/assets/team2.jpg"
-            alt="Equipo 2"
-            width={500}
-            height={700}
-            class="rounded-lg object-cover bg-gray-400 shadow-lg flex-1 "
-          />
-      <article class="flex-1 lg:flex-2">
-          <h2
-          id="sobre-nosotros-encabezado"
-          class="text-lg font-bold mb-2 text-white"
-        >
-          Sobre Nosotros
-        </h2>
-        <h3 class="text-3xl font-semibold mb-10">Nuestra Historia</h3>
-        <p class="mb-5">
-          Lorem ipsum odor amet, Lorem consectetuer adipiscing elit. lore
-          Consequat praesent nec primis fermentum.Lorem ipsum odor amet, Lorem
-        </p>
-        <ul class="space-y-2 list-disc list-inside">
-          <li>
-            Consequat praesent nec primis fermentum.Lorem ipsum odor amet.
-          </li>
-          <li>
-            Consequat praesent nec primis fermentum.Lorem ipsum odor amet.
-          </li>
-          <li>
-            Consequat praesent nec primis fermentum.Lorem ipsum odor amet.
-          </li>
-          <li>
-            Consequat praesent nec primis fermentum.
-          </li>
-        </ul>
-      </article>
-    </div>
-  </section>
+    <Image
+      src="/assets/team2.jpg"
+      alt="Equipo 2"
+      width={500}
+      height={700}
+      class="rounded-lg object-cover bg-gray-400 shadow-lg flex-1"
+    />
+    <article class="flex-1 lg:flex-2">
+      <h2
+        id="sobre-nosotros-encabezado"
+        class="text-lg font-bold mb-2 text-white"
+      >
+        Nuestros valores
+      </h2>
+      <h3 class="text-3xl font-semibold mb-6">
+        Construimos confianza y resultados
+      </h3>
+      <p class="mb-5">
+        Creemos firmemente en ofrecer un servicio de calidad que refleje nuestra
+        dedicación, compromiso y pasión por el mercado inmobiliario.
+      </p>
+      <ul class="space-y-2 list-disc list-inside">
+        <li>
+          <span class="font-bold">Transparencia: </span> Valoramos la honestidad
+          y la claridad en todas nuestras operaciones
+        </li>
+        <li>
+          <span class="font-bold">Compromiso: </span> Brindamos un servicio personalizado
+          que se adapta a sus necesidades y expectativas.
+        </li>
+        <li>
+          <span class="font-bold">Excelencia: </span> Nos esforzamos por alcanzar la perfección en cada detalle de nuestro trabajo.
+        </li>
+        <li>
+          <span class="font-bold">Innovación: </span> Nos mantenemos al tanto de las tendencias y herramientas del mercado para ofrecer soluciones modernas.
+        </li>
+      </ul>
+    </article>
+  </div>
+</section>
