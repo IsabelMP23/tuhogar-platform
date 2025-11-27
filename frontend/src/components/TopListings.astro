@@ -1,14 +1,29 @@
 ---
-import CardCarousel from "./CardCarousel.astro";
-import { fetchPropiedades } from "../lib/api";
+import CardCarousel from "./CardCarousel.jsx";
 import Image from "astro/components/Image.astro";
-const propiedades = await fetchPropiedades();
+
+interface Propiedad {
+  id_propiedad: number;
+  titulo: string;
+  descripcion: string | null;
+  tipo: "departamento" | "casa" | "terreno" | "local";
+  precio: number;
+  estado: "disponible" | "vendida" | "rentada";
+  imagen_principal: string;
+  agente_id: number | null;
+  id_ubicacion: number | null;
+  id_detalle: number | null;
+  fecha_publicacion: string;
+}
+
+const { propiedades } = Astro.props;
 ---
 
-<section class="max-w-7xl mx-auto py-20" aria-labelledby="sobre-nosotros-encabezado">
-  <div
-    class="w-full px-3 sm:px-6 lg:px-8 overflow-hidden"
-  >
+<section
+  class="max-w-7xl mx-auto py-20"
+  aria-labelledby="sobre-nosotros-encabezado"
+>
+  <div class="w-full px-3 sm:px-6 lg:px-8 overflow-hidden">
     <h2
       id="sobre-nosotros-encabezado"
       class="text-lg font-bold mb-2 text-white"
@@ -16,34 +31,37 @@ const propiedades = await fetchPropiedades();
       Nuestras propiedades
     </h2>
     <h3 class="text-3xl font-semibold mb-2">Las mejores propiedades</h3>
-    <CardCarousel>
+    <CardCarousel client:load>
       {
-        propiedades.slice(0, 5).map((propiedad, i) => (
-          <a href={`/propiedades/${propiedad.id_propiedad}`} >
-          <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col items-center h-80 ">
-            <Image
-              src={propiedad.imagen_principal}
-              alt={propiedad.titulo}
-              width={300}
-              height={200}
-              class="w-full h-48 object-cover rounded-t-md"
-              loading="lazy"
-            />
+        propiedades.slice(0, 5).map((propiedad: Propiedad) => (
+          <a href={`/propiedades/${propiedad.id_propiedad}`}>
+            <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col items-center h-80 ">
+              <Image
+                src={propiedad.imagen_principal}
+                alt={propiedad.titulo}
+                width={300}
+                height={200}
+                class="w-full h-48 object-cover rounded-t-md"
+                loading="lazy"
+              />
 
-            <article class="px-4 w-full">
-              <h3 class="text-lg font-bold mt-3">$ {propiedad.precio.toLocaleString()} MXN</h3>
-              <h4 class="text-md font-medium">{propiedad.titulo}</h4>
-              <p class="text-gray-600 text-sm line-clamp-2">
-                {propiedad.descripcion}
-              </p>
-            </article>
-          </div>
+              <article class="px-4 w-full">
+                <h3 class="text-lg font-bold mt-3">
+                  $ {propiedad.precio.toLocaleString()} MXN
+                </h3>
+                <h4 class="text-md font-medium">{propiedad.titulo}</h4>
+                <p class="text-gray-600 text-sm line-clamp-2">
+                  {propiedad.descripcion}
+                </p>
+              </article>
+            </div>
           </a>
         ))
       }
     </CardCarousel>
-    <button class="btn mt-4 px-6 py-3 mx-auto block" onclick="location.href='/propiedades'"
-      >Ver todas las propiedades</button
+    <button
+      class="btn mt-4 px-6 py-3 mx-auto block"
+      onclick="location.href='/propiedades'">Ver todas las propiedades</button
     >
   </div>
 </section>

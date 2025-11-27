@@ -1,9 +1,9 @@
 ---
-import CardCarousel from "./CardCarousel.astro";
+import CardCarousel from "./CardCarousel.jsx";
 ---
 
 <section class="max-w-7xl md:max-w-11/12 mx-auto py-5 flex flex-col items-center" aria-labelledby="sobre-nosotros-encabezado">
-    <CardCarousel>
+    <CardCarousel client:load>
       {
         [1, 2, 3].map((_, i) => (
           <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col h-80 p-6 ">

@@ -1,5 +1,5 @@
 ---
-import CardCarousel from "../components/CardCarousel.astro";
+import CardCarousel from "../components/CardCarousel.jsx";
 import StarRating from "../components/StartRating.astro";
 import Image from "astro/components/Image.astro";
 
@@ -46,7 +46,7 @@ const reviews = [
       Reseñas favorables
     </h2>
     <h3 class="text-3xl font-semibold mb-2">Comentarios</h3>
-    <CardCarousel>
+    <CardCarousel client:load>
       {
         reviews.map((review, i) => (
           <div class="bg-white rounded-lg shadow-md min-w-[20rem] flex flex-col justify-center h-60 p-4">

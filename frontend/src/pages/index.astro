@@ -5,13 +5,20 @@ import AboutUs from "../components/AboutUs.astro";
 import TopListings from "../components/TopListings.astro";
 import Reviews from "../components/Reviews.astro";
 import CallComponent from "../components/CallComponent.astro";
-export const prerender = true;
+import { fetchPropiedades } from "../lib/api";
+
+
+const res = await fetch("https://tuhogar-platform-production.up.railway.app/api/servicios");
+const servicios = await res.json();
+
+const propiedades = await fetchPropiedades();
+
 ---
 
 <BaseLayout title="Inicio" HomeStyle>
-  <Hero />
+  <Hero  servicios={servicios} />
   <AboutUs />
-  <TopListings />
+  <TopListings propiedades={propiedades} />
   <CallComponent />
   <Reviews />
 </BaseLayout>

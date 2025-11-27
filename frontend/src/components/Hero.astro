@@ -1,6 +1,6 @@
 ---
 import HeroBg from "./HeroBg.astro";
-import CardCarousel from "./CardCarousel.astro";
+import CardCarousel from "./CardCarousel.jsx";
 import Image from "astro/components/Image.astro";
 
 interface Servicio {
@@ -10,9 +10,7 @@ interface Servicio {
   icono: string;
 }
 
-const res = await fetch("http://localhost:3000/api/servicios");
-const servicios = await res.json();
-
+const { servicios } = Astro.props;
 ---
 
 <section class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8" aria-labelledby="hero">
@@ -26,7 +24,7 @@ const servicios = await res.json();
     </p>
     <button class="btn px-6 py-3 transition">Catálogo</button>
   </div>
-  <CardCarousel>
+  <CardCarousel client:load>
     {
       servicios.map(({ nombre, descripcion, icono }: Servicio) => (
         <div

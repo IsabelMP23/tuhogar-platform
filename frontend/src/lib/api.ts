@@ -1,7 +1,7 @@
 import { PropertySchema } from "../schemas/propiedades";
 import {PropertyDetailSchema} from "../schemas/propiedadesDetalles";
 
-const API_URL = "http://localhost:3000/api/propiedades";
+const API_URL = "https://tuhogar-platform-production.up.railway.app/api/propiedades";
 
 export async function fetchPropiedades() {
   const res = await fetch(API_URL);
