@@ -17,7 +17,7 @@ const getPropertiesPaginated  = async (page = 1, limit= 10) => {
 
     const { data, count, error } = await supabase
         .from('propiedades')
-        .select('*', { count: 'exact', head: true })
+        .select('*', { count: 'exact'})
         .range(from, to)
         .order('fecha_creacion', { ascending: false });
 
