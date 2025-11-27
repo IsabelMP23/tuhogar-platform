@@ -19,7 +19,7 @@ const getPropertiesPaginated  = async (page = 1, limit= 10) => {
         .from('propiedades')
         .select('*', { count: 'exact'})
         .range(from, to)
-        .order('fecha_creacion', { ascending: false });
+        .order('fecha_publicacion', { ascending: false });
 
     if (error) throw new Error(error.message);
     return { data, count };
