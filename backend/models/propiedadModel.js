@@ -10,6 +10,21 @@ const getAllProperties = async () => {
     return data;
 };
 
+//Funcion para obtener las propiedades con paginación
+const getPropertiesPaginated  = async (page = 1, limit= 10) => {
+    const from = (page - 1) * limit;
+    const to = from + limit - 1;
+
+    const { data, count, error } = await supabase
+        .from('propiedades')
+        .select('*', { count: 'exact', head: true })
+        .range(from, to)
+        .order('fecha_creacion', { ascending: false });
+
+    if (error) throw new Error(error.message);
+    return { data, count };
+};
+
 //Función para obtener una propiedad por su ID
 const getPropertyById = async (id) => {
     const { data, error } = await supabase
@@ -126,4 +141,5 @@ module.exports = {
     updateProperty,
     deleteProperty,
     getPropertyDetailsById,
+    getPropertiesPaginated
 };
