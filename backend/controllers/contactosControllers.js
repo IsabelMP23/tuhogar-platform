@@ -1,6 +1,6 @@
-import {Resend} from 'resend';
-const resend = new Resend(process.env.RESEND_API_KEY);
+const { Resend } = require('resend');
 const contactosModel = require('../models/contactosModel');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 //Controladores para gestionar contactos
 const getAllContacts = async (req, res) => {
