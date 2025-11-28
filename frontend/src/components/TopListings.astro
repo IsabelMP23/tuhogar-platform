@@ -1,22 +1,5 @@
 ---
-import CardCarousel from "./CardCarousel.jsx";
-import Image from "astro/components/Image.astro";
-
-interface Propiedad {
-  id_propiedad: number;
-  titulo: string;
-  descripcion: string | null;
-  tipo: "departamento" | "casa" | "terreno" | "local";
-  precio: number;
-  estado: "disponible" | "vendida" | "rentada";
-  imagen_principal: string;
-  agente_id: number | null;
-  id_ubicacion: number | null;
-  id_detalle: number | null;
-  fecha_publicacion: string;
-}
-
-const { propiedades } = Astro.props;
+import PropiedadesCarousel from "./PropiedadesCarousel"
 ---
 
 <section
@@ -31,34 +14,7 @@ const { propiedades } = Astro.props;
       Nuestras propiedades
     </h2>
     <h3 class="text-3xl font-semibold mb-2">Las mejores propiedades</h3>
-    <CardCarousel client:load>
-      {
-        propiedades.slice(0, 5).map((propiedad: Propiedad) => (
-          <a href={`/propiedades/${propiedad.id_propiedad}`}>
-            <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col items-center h-80 ">
-              <Image
-                src={propiedad.imagen_principal}
-                alt={propiedad.titulo}
-                width={300}
-                height={200}
-                class="w-full h-48 object-cover rounded-t-md"
-                loading="lazy"
-              />
-
-              <article class="px-4 w-full">
-                <h3 class="text-lg font-bold mt-3">
-                  $ {propiedad.precio.toLocaleString()} MXN
-                </h3>
-                <h4 class="text-md font-medium">{propiedad.titulo}</h4>
-                <p class="text-gray-600 text-sm line-clamp-2">
-                  {propiedad.descripcion}
-                </p>
-              </article>
-            </div>
-          </a>
-        ))
-      }
-    </CardCarousel>
+    <PropiedadesCarousel client:visible/>
     <button
       class="btn mt-4 px-6 py-3 mx-auto block"
       onclick="location.href='/propiedades'">Ver todas las propiedades</button

@@ -5,18 +5,19 @@ import Image from "astro/components/Image.astro";
 <div
   class="herobg absolute inset-0 -z-10 from-blue-100 to-white h-fit pb-15 sm:pb-20 overflow-hidden"
 >
-  <div class="h-[550px] rounded-b-3xl  overflow-hidden relative">
+  <div class="h-[550px] rounded-b-3xl overflow-hidden relative">
     <Image
       src="/images/hero.webp"
       alt="Fondo Hero"
       class="w-full h-full mx-auto object-cover"
       width={1920}
       height={1080}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1920px"
       loading="eager"
+      fetchpriority="high"
     />
     <div class="absolute inset-0 bg-black/15"></div>
   </div>
-   
 </div>
 
 <style>

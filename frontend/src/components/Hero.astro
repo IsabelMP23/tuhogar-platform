@@ -1,16 +1,6 @@
 ---
 import HeroBg from "./HeroBg.astro";
-import CardCarousel from "./CardCarousel.jsx";
-import Image from "astro/components/Image.astro";
-
-interface Servicio {
-  id_servicio: number;
-  nombre: string;
-  descripcion: string;
-  icono: string;
-}
-
-const { servicios } = Astro.props;
+import ServiciosCarousel from "./ServiciosCarousel";
 ---
 
 <section class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8" aria-labelledby="hero">
@@ -24,25 +14,5 @@ const { servicios } = Astro.props;
     </p>
     <button class="btn px-6 py-3 transition">Catálogo</button>
   </div>
-  <CardCarousel client:load>
-    {
-      servicios.map(({ nombre, descripcion, icono }: Servicio) => (
-        <div
-          class="bg-white rounded-lg shadow-md min-w-[16rem] md:max-w-3/4 h-80 flex flex-col items-center p-6"
-        >
-          
-          <Image
-            src={icono}
-            alt={nombre}
-            height={22}
-            width={22}
-            loading="eager"
-            class="w-22 h-22 object-cover"
-          />
-          <h3 class="text-xl font-semibold mt-3 text-center">{nombre}</h3>
-          <p class="text-gray-600 text-sm mt-2 text-center">{descripcion}</p>
-        </div>
-      ))
-    }
-  </CardCarousel>
+  <ServiciosCarousel client:load/>
 </section>

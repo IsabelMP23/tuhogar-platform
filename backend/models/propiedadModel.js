@@ -17,7 +17,25 @@ const getPropertiesPaginated  = async (page = 1, limit= 10) => {
 
     const { data, count, error } = await supabase
         .from('propiedades')
-        .select('*', { count: 'exact'})
+        .select(`
+            id_propiedad,
+            titulo,
+            descripcion,
+            tipo,
+            precio,
+            estado,
+            imagen_principal,
+            fecha_publicacion,
+            detalles_propiedad(
+                cuartos,
+                banos,
+            ),
+            ubicaciones(
+                direccion,
+                ciudad,
+                colonia,
+            )
+        `, { count: 'exact'})
         .range(from, to)
         .order('fecha_publicacion', { ascending: false });
 
