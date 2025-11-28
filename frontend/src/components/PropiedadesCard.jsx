@@ -17,12 +17,25 @@ export default function PropiedadesCard({ prop }) {
         <aside className="flex-1 flex flex-col justify-between">
           <h2 className="text-xl font-semibold mb-2">{prop.titulo}</h2>
           <p className="text-3xl font-bold mb-2">
-            ${prop.precio?.toLocaleString()} <span className="text-xl">MXN</span>
+            ${prop.precio?.toLocaleString()}{" "}
+            <span className="text-xl">MXN</span>
           </p>
-          <p className="text-gray-600 mb-4 line-clamp-3 h-18">{prop.descripcion}</p>
-          <p className="text-sm text-gray-500 capitalize">
-            Tipo: {prop.tipo} | Estado: {prop.estado}
+          <p className="text-gray-600 mb-4 line-clamp-3 h-18">
+            {prop.descripcion}
           </p>
+          <div className="flex flex-row flex-wrap gap-4">
+            <p className="text-sm text-gray-500 capitalize">
+              Habitaciones: {prop.detalles_propiedad?.cuartos} | Baños:{" "}
+              {prop.detalles_propiedad?.banos}
+            </p>
+            <p className="text-sm text-gray-500 capitalize">
+              Ubicación: {prop.ubicaciones?.direccion},{" "}
+              {prop.ubicaciones?.ciudad}, {prop.ubicaciones?.colonia}
+            </p>
+            <p className="text-sm text-gray-500 capitalize">
+              Tipo: {prop.tipo} | Estado: {prop.estado}
+            </p>
+          </div>
         </aside>
       </div>
     </a>

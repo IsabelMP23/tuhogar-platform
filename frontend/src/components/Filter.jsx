@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Filter({ filtro, setFiltro }) {
+export default function Filter({ filtro, setFiltro, close }) {
   const [draftFiltro, setDraftFiltro] = useState(filtro);
 
   const actualizarFiltro = (campo, valor) => {
@@ -9,6 +9,7 @@ export default function Filter({ filtro, setFiltro }) {
 
   const aplicarFiltros = () => {
     setFiltro(draftFiltro);
+    if (close) close();
   }
 
   const limpiarFiltros = () => {
@@ -26,7 +27,6 @@ export default function Filter({ filtro, setFiltro }) {
 
 
   return (
-    <section className="max-w-72 hidden lg:block">
       <article className="bg-white rounded-lg shadow-2xl border p-4">
         <h2 className="text-xl font-semibold mb-4">Filtros</h2>
 
@@ -120,7 +120,7 @@ export default function Filter({ filtro, setFiltro }) {
           />
         </div>
 
-         <div className="flex flex-col gap-3 mt-4">
+         <div className="flex-col gap-3 mt-4 flex">
           <button
             onClick={aplicarFiltros}
             className="btn font-medium py-2 rounded-lg"
@@ -138,6 +138,5 @@ export default function Filter({ filtro, setFiltro }) {
 
 
       </article>
-    </section>
   );
 }
