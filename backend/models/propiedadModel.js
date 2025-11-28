@@ -27,12 +27,12 @@ const getPropertiesPaginated = async (page = 1, limit = 10) => {
             fecha_publicacion,
             detalles_propiedad(
                 cuartos,
-                banos,
+                banos
             ),
             ubicaciones(
                 direccion,
                 ciudad,
-                colonia,
+                colonia
             )
         `,
       { count: "exact" }
@@ -41,6 +41,7 @@ const getPropertiesPaginated = async (page = 1, limit = 10) => {
     .order("fecha_publicacion", { ascending: false });
 
   if (error) throw new Error(error.message);
+  if (!data) return { data: [], count: 0 };
 
   const propiedadesLimpias = data.map((p) => {
     const detalles = Array.isArray(p.detalles_propiedad)
