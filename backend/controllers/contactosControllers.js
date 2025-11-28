@@ -34,7 +34,7 @@ const createContact = async (req, res) => {
 
         // Enviar correo de confirmación usando Resend
         await resend.emails.send({
-            from: 'TuHogar <noreply@resend.dev>',
+            from: 'TuHogar <notificaciones@eaustuziam.resend.app>',
             to: "tuhogar.platform@gmail.com",
             subject: 'Nuevo contacto recibido',
             html: `
