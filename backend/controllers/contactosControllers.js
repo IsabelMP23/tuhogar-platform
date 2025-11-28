@@ -1,3 +1,5 @@
+import {Resend} from 'resend';
+const resend = new Resend(process.env.RESEND_API_KEY);
 const contactosModel = require('../models/contactosModel');
 
 //Controladores para gestionar contactos
@@ -29,7 +31,26 @@ const createContact = async (req, res) => {
     const newContact = req.body;
     try {
         const createdContact = await contactosModel.createContact(newContact);
-        res.status(201).json(createdContact);
+
+        // Enviar correo de confirmación usando Resend
+        await resend.emails.send({
+            from: 'TuHogar <tuhogar.platform@gmail.com>',
+            to: "tuhogar.platform@gmail.com",
+            subject: 'Nuevo contacto recibido',
+            html: `
+                <h2>Nuevo contacto registrado</h2>
+                <p><strong>Nombre:</strong> ${newContact.nombre}</p>
+                <p><strong>Correo:</strong> ${newContact.correo}</p>
+                <p><strong>Teléfono:</strong> ${newContact.telefono}</p>
+                <p><strong>Mensaje:</strong> ${newContact.mensaje}</p>
+                <p><strong>Fecha:</strong> ${createdContact.fecha_contacto}</p>
+            `
+        });
+
+         res.status(201).json({
+            message: "Contacto creado y correo enviado",
+            data: createdContact
+        });
     } catch (error) {
         res.status(500).json({ error: 'Error al crear el contacto', detail: error.message });
     }
