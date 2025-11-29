@@ -6,7 +6,7 @@ const { HomeStyle } = Astro.props;
   <nav
     class={`relative after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px ${HomeStyle ? "" : "bg-(--secondary-color)"}`}
   >
-    <div class="mx-auto max-w-7xl md:max-w-11/12 px-3 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl lg:max-w-362 px-3 sm:px-6 lg:px-8">
       <div class="relative z-20 flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-start">
           <a href="/" class="flex shrink-0 items-center" aria-label="Inicio">
@@ -18,7 +18,7 @@ const { HomeStyle } = Astro.props;
             </p>
           </a>
           <div
-            class={`hidden sm:ml-auto sm:block bg-white rounded-4xl px-3 py-1 ${HomeStyle ? "shadow-xl/30" : ""}`}
+            class={`hidden sm:ml-auto md:block bg-white rounded-4xl px-3 py-1 ${HomeStyle ? "shadow-xl/30" : ""}`}
           >
             <div class="flex space-x-4">
               <a
@@ -44,7 +44,7 @@ const { HomeStyle } = Astro.props;
               >
             </div>
           </div>
-          <div class="hidden sm:block items-center sm:ml-auto">
+          <div class="hidden md:block items-center sm:ml-auto">
             <a 
               id="btnContactanos"
               href="/contactanos"
@@ -55,7 +55,7 @@ const { HomeStyle } = Astro.props;
           </div>
         </div>
       </div>
-      <div class="absolute inset-y-0 right-4 flex items-center sm:hidden">
+      <div class="absolute inset-y-0 right-3 flex items-center md:hidden">
         <button
           type="button"
           id="mobile-menu-btn"
@@ -100,9 +100,9 @@ const { HomeStyle } = Astro.props;
     <el-disclosure
       id="mobile-menu"
       hidden
-      class="peer block sm:hidden absolute w-full right-0 top-0 overflow-hidden transition-all duration-300 pt-20 bg-(--secondary-color) shadow-lg rounded-bl-lg"
+      class="peer block lg:hidden absolute w-full right-0 top-0 overflow-hidden transition-all duration-300 pt-20 bg-(--secondary-color) shadow-lg rounded-bl-lg"
     >
-      <div class="space-y-1 px-2 pt-2 pb-3 z-10">
+      <div class="space-y-1 px-6 pt-2 pb-3 z-30">
         <a
           href="/"
           aria-current="page"

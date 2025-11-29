@@ -4,15 +4,15 @@ import Image from "astro/components/Image.astro";
 ---
 
 
-<article class="w-full flex-1">
-  <div class="relative w-full max-w-4xl mx-auto">
-    <div id="slider" class="relative overflow-hidden h-96  rounded-2xl">
+<article class="flex-1">
+  <div class="relative w-full mx-auto">
+    <div id="slider" class="relative overflow-hidden h-96 md:h-120  rounded-2xl">
       {
         propiedad.imagenes_adicionales.map((img: string, i: number) => (
           <Image
             src={img}
-            width={900}
-            height={600}
+            width={700}
+            height={500}
             alt={`Imagen adicional ${i + 1} de la propiedad`}
             class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
               i === 0 ? "opacity-100" : "opacity-0"

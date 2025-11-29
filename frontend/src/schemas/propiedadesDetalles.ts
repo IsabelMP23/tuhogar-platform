@@ -5,12 +5,12 @@ export const PropertyDetailSchema = z.object({
   titulo: z.string(),
   descripcion: z.string(),
   tipo: z.enum(["departamento", "casa", "terreno", "local"]),
-  precio: z.string().transform(Number),
+  precio: z.number(),
   estado: z.enum(["disponible", "vendida", "rentada"]),
   imagen_principal: z.string(),
   fecha_publicacion: z.string(),
 
-  area_construida: z.string().transform(Number),
+  area_construida: z.number(),
   cuartos: z.number(),
   banos: z.number(),
   estacionamientos: z.number(),
@@ -25,8 +25,8 @@ export const PropertyDetailSchema = z.object({
   colonia: z.string(),
   codigo_postal: z.string(),
 
-  latitud: z.string(),
-  longitud: z.string()
+  latitud: z.number(),
+  longitud: z.number()
 });
 
 export type PropertyDetail = z.infer<typeof PropertyDetailSchema>;

@@ -1,58 +1,101 @@
 ---
-import CardCarousel from "./CardCarousel.astro";
+const servicios = [
+  {
+    titulo: "Venta de Propiedades",
+    icono: "fa-solid fa-sign-hanging", // Letrero de “se vende”
+    descripcion:
+      "Asesoramos a propietarios para vender su inmueble de forma rápida, segura y al mejor precio del mercado.",
+    caracteristicas: [
+      "Análisis de valor de mercado",
+      "Fotografía profesional",
+      "Promoción en portales inmobiliarios"
+    ]
+  },
+  {
+    titulo: "Renta de Propiedades",
+    icono: "fa-solid fa-key", // Llave
+    descripcion:
+      "Gestionamos contratos de renta garantizando seguridad al propietario y comodidad al inquilino.",
+    caracteristicas: [
+      "Publicación y visitas programadas",
+      "Evaluación de inquilinos",
+      "Elaboración de contratos"
+    ]
+  },
+  {
+    titulo: "Compra de Propiedades",
+    icono: "fa-solid fa-house", // Casa
+    descripcion:
+      "Acompañamos al cliente en todo el proceso de compra hasta encontrar la propiedad ideal.",
+    caracteristicas: [
+      "Búsqueda personalizada",
+      "Negociación profesional",
+      "Acompañamiento notarial"
+    ]
+  },
+  {
+    titulo: "Administración de Inmuebles",
+    icono: "fa-solid fa-clipboard-list", // Administración
+    descripcion:
+      "Nos encargamos de la administración integral para propietarios que desean delegar la gestión.",
+    caracteristicas: [
+      "Cobro de rentas",
+      "Atención a mantenimiento",
+      "Reportes mensuales"
+    ]
+  },
+  {
+    titulo: "Avalúos Inmobiliarios",
+    icono: "fa-solid fa-chart-line", // Gráfica de análisis
+    descripcion:
+      "Realizamos avalúos profesionales para determinar el valor real de un inmueble.",
+    caracteristicas: [
+      "Inspección del inmueble",
+      "Reporte detallado",
+      "Metodologías oficiales"
+    ]
+  },
+  {
+    titulo: "Asesoría Legal y Notarial",
+    icono: "fa-solid fa-scale-balanced", // Balanza legal
+    descripcion:
+      "Brindamos apoyo legal durante compraventas, contratos, trámites notariales y regularización.",
+    caracteristicas: [
+      "Revisión de documentos",
+      "Asesoría en trámites",
+      "Acompañamiento en firma"
+    ]
+  }
+];
 ---
 
-<section class="max-w-7xl md:max-w-11/12 mx-auto py-5 flex flex-col items-center" aria-labelledby="sobre-nosotros-encabezado">
-    <CardCarousel>
-      {
-        [1, 2, 3].map((_, i) => (
-          <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col h-80 p-6 ">
-            <img
-              src={`/assets/property${i + 1}.jpg`}
-              alt={`Propiedad ${i + 1}`}
-              class="w-20 h-20 object-cover rounded-md bg-gray-400"
-            />
-            <article class="w-full flex flex-col justify-around">
-              <h3 class="text-lg font-bold mt-3">Encabezado </h3>
-              <p class="text-gray-600 text-sm line-clamp-2 mb-2">
-                Descripción del servicio ofrecido por la empresa.
-              </p>
-              <ul class="space-y-2 list-disc list-inside">
-                <li class="text-gray-600 text-sm">Característica 1</li>
-                <li class="text-gray-600 text-sm">Característica 2</li>
-                <li class="text-gray-600 text-sm">Característica 3</li>
-              </ul>
-            </article>
-          </div>
-        ))
-      }
-    </CardCarousel>
-    <CardCarousel>
-      {
-        [1, 2, 3].map((_, i) => (
-          <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col h-80 p-6 ">
-            <img
-              src={`/assets/property${i + 1}.jpg`}
-              alt={`Propiedad ${i + 1}`}
-              class="w-20 h-20 object-cover rounded-md bg-gray-400"
-            />
-            <article class="w-full flex flex-col justify-around">
-              <h3 class="text-lg font-bold mt-3">Encabezado </h3>
-              <p class="text-gray-600 text-sm line-clamp-2 mb-2">
-                Descripción del servicio ofrecido por la empresa.
-              </p>
-              <ul class="space-y-2 list-disc list-inside">
-                <li class="text-gray-600 text-sm">Característica 1</li>
-                <li class="text-gray-600 text-sm">Característica 2</li>
-                <li class="text-gray-600 text-sm">Característica 3</li>
-              </ul>
-            </article>
-          </div>
-        ))
-      }
-    </CardCarousel>
-    <a href="/contactanos" class="btn mt-4 px-6 py-3"
-      >Contactanos</a
-    >
-  </div>
+<section 
+  class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+  aria-labelledby="sobre-nosotros-encabezado"
+>
+  {
+    servicios.map((servicio) => (
+      <div class="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col h-80 p-6">
+         <div class="w-20 h-20 bg-gray-100 rounded-md flex items-center justify-center text-gray-700 text-4xl">
+          <i class={servicio.icono}></i>
+        </div>
+
+        <article class="w-full flex flex-col justify-around">
+          <h3 class="text-lg font-bold mt-3">{servicio.titulo}</h3>
+
+          <p class="text-gray-600 text-sm line-clamp-2 mb-2">
+            {servicio.descripcion}
+          </p>
+
+          <ul class="space-y-2 list-disc list-inside">
+            {
+              servicio.caracteristicas.map((carac) => (
+                <li class="text-gray-600 text-sm">{carac}</li>
+              ))
+            }
+          </ul>
+        </article>
+      </div>
+    ))
+  }
 </section>

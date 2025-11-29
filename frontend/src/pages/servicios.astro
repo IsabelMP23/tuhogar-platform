@@ -7,20 +7,19 @@ import ServicesCards from "../components/ServicesCards.astro";
 <BaseLayout title="Servicios">
   <section aria-labelledby="servicio-hero-image">
     <Image
-        src={"/assets/callcenter.jpg"}
-        alt="Compra de propiedades"
-        width={1200}
-        height={400}
-        format="avif"
-        loading="eager"
-        class="w-full h-auto md:max-h-92 object-cover  bg-gray-400"
-      />
-    </section>
-  <section class="py-20 px-3 sm:px-6 lg:px-8">
-    <h1 class="text-lg font-bold mb-2 text-center">Nuestros Servicios</h1>
-    <h3 class="text-3xl font-semibold mb-4 text-center">Asesoría Inmobiliaria Integral</h3>
-    <ServicesCards />
+      src={"/images/servicios.webp"}
+      alt="Compra de propiedades"
+      width={1200}
+      height={400}
+      format="webp"
+      loading="eager"
+      class="w-full h-auto md:max-h-92 object-cover lg:object-top bg-gray-400"
+    />
   </section>
-
-  
+  <section class="my-20 px-6 flex flex-col items-center max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold mb-2">Nuestros Servicios</h1>
+    <h3 class="text-3xl font-semibold mb-10">Asesoría Inmobiliaria Integral</h3>
+    <ServicesCards />
+    <a href="/contactanos" class="btn mt-10 px-6 py-3">Contactanos</a>
+  </section>
 </BaseLayout>

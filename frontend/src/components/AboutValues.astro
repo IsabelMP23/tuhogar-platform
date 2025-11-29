@@ -3,17 +3,19 @@ import Image from "astro/components/Image.astro";
 ---
 
 <section
-  class="w-full max-w-7xl mx-auto py-20"
+  class="w-full max-w-7xl mx-auto mt-32 md:mt-65 mb-32 px-6"
   aria-labelledby="conocenos-historia"
 >
   <div
-    class="flex flex-col-reverse justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
+    class="flex flex-col-reverse justify-center items-center gap-15 md:flex-row"
   >
     <Image
-      src="/assets/team2.jpg"
-      alt="Equipo 2"
-      width={500}
-      height={700}
+      src="/images/valores.webp"
+      alt="Valores"
+      width={400}
+      height={600}
+      format="webp"
+      loading="lazy"
       class="rounded-lg object-cover bg-gray-400 shadow-lg flex-1"
     />
     <article class="flex-1 lg:flex-2">
