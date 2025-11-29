@@ -1,0 +1,102 @@
+<form
+  class="space-y-6 shadow-lg p-6 rounded-2xl border border-gray-200 bg-white relative z-10 max-w-150 mx-auto"
+  id="contactForm"
+>
+  <div>
+    <label for="name" class="block text-sm font-medium mb-1">Nombre</label>
+    <input
+      type="text"
+      id="name"
+      name="nombre"
+      class="w-full border border-gray-300 rounded-md p-2"
+      required
+    />
+  </div>
+
+  <div class="flex gap-2 justify-center items-center">
+    <label for="email" class="block text-sm font-medium flex-1"
+      >Correo 
+      <input
+        type="email"
+        id="email"
+        name="correo"
+        class="w-full border border-gray-300 rounded-md p-2 mt-1"
+        required
+      />
+    </label>
+    <label for="telefono" class="block text-sm font-medium flex-1 md:flex-none md:w-50"
+      >Teléfono
+      <input
+        type="tel"
+        id="telefono"
+        name="telefono"
+        class="w-full border border-gray-300 rounded-md p-2 mt-1"
+        required
+      />
+    </label>
+  </div>
+
+  <div>
+    <label for="tema" class="block text-sm font-medium mb-1">Tema</label>
+    <input
+      type="text"
+      id="tema"
+      name="tema"
+      class="w-full border border-gray-300 rounded-md p-2"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="message" class="block text-sm font-medium mb-1">Mensaje</label>
+    <textarea
+      id="message"
+      name="mensaje"
+      rows="5"
+      class="w-full border border-gray-300 rounded-md p-2"
+      required></textarea>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn">Enviar Mensaje</button>
+  </div>
+
+  <p id="statusMessage" class="mt-2 text-center text-sm"></p>
+</form>
+
+<script>
+  import { createContacto } from "../lib/api.js";
+
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const statusEl = document.getElementById("statusMessage") as HTMLElement;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    statusEl.textContent = "Enviando...";
+
+    const formData = new FormData(form);
+    const data = {
+      nombre: formData.get("nombre"),
+      correo: formData.get("correo"),
+      telefono: formData.get("telefono"),
+      mensaje: `Tema: ${formData.get("tema")}\n\nMensaje: ${formData.get("mensaje")}`,
+    };
+
+    try {
+      await createContacto(
+        data as {
+          nombre: string;
+          correo: string;
+          telefono: string;
+          mensaje: string;
+        }
+      );
+      statusEl.textContent = "Mensaje enviado con éxito.";
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      statusEl.textContent =
+        "Error al enviar el mensaje. Por favor, inténtalo de nuevo.";
+    }
+  });
+</script>
