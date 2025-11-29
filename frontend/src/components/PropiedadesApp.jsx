@@ -21,7 +21,7 @@ export default function PropiedadesApp() {
 
   return (
     <>
-    <section className="max-w-72 hidden lg:block">
+    <section className="max-w-72 hidden lg:block mb-6">
        <Filter filtro={filtro} setFiltro={setFiltro} close={() => setShowMobileFilters(false)} />
     </section>
       <MobileFilters

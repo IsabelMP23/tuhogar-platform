@@ -3,34 +3,36 @@ import Image from "astro/components/Image.astro";
 ---
 
 <section
-  class="w-full max-w-7xl mx-auto py-20"
+  class="w-full max-w-7xl mx-auto mt-32 mb-45 md:mt-60 md:mb-32 px-6"
   aria-labelledby="conocenos-historia"
 >
   <div
-    class="flex flex-col-reverse justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
+    class="flex flex-col-reverse justify-center items-center gap-15 md:flex-row"
   >
     <article class="flex-1 grid grid-cols-2 gap-4">
       <Image
-        src="/assets/team1.jpg"
-        alt="Equipo 1"
+        src="/images/casa.webp"
+        alt="Casa 1"
         width={500}
         height={900}
-        class="rounded-lg object-cover bg-gray-400 shadow-lg translate-y-[-40px]"
-        loading="eager"
+        format="webp"
+        class="rounded-lg object-cover bg-gray-400 shadow-lg -translate-y-10 h-full w-auto"
+        loading="lazy"
       />
       <Image
-        src="/assets/team2.jpg"
-        alt="Equipo 2"
+        src="/images/casa2.webp"
+        alt="Casa 2"
         width={500}
         height={900}
+        format="webp"
         class="rounded-lg object-cover bg-gray-400 shadow-lg translate-y-10"
-        loading="eager"
+        loading="lazy"
       />
     </article>
     <article class="flex-1">
       <h2
         id="sobre-nosotros-encabezado"
-        class="text-lg font-bold mb-2 text-white"
+        class="text-2xl font-bold mb-2 text-white"
       >
         Nuestra visión
       </h2>

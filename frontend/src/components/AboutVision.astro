@@ -3,16 +3,16 @@ import Image from "astro/components/Image.astro";
 ---
 
 <section
-  class="w-full max-w-7xl mx-auto py-20"
+  class="w-full max-w-7xl mx-auto mt-32 md:mt-70 mb-32 px-6"
   aria-labelledby="conocenos-historia"
 >
   <div
-    class="flex flex-col justify-center items-center gap-15 md:flex-row px-3 sm:px-6 lg:px-8"
+    class="flex flex-col justify-center items-center gap-15 md:flex-row"
   >
     <article class="flex-1">
       <h2
         id="sobre-nosotros-encabezado"
-        class="text-lg font-bold mb-2 text-white"
+        class="text-2xl font-bold mb-2 text-white"
       >
         Nuestra Misión
       </h2>
@@ -29,10 +29,12 @@ import Image from "astro/components/Image.astro";
       </p>
     </article>
     <Image
-      src="/assets/team2.jpg"
-      alt="Equipo 2"
+      src="/images/casa3.webp"
+      alt="Casa 3"
       width={500}
       height={300}
+      format="webp"
+      loading="lazy"
       class="rounded-lg object-cover bg-gray-400 shadow-lg flex-1"
     />
   </div>

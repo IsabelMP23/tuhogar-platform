@@ -85,13 +85,13 @@ export default function PropiedadesList({ initialPage = 1, filtro, busqueda }) {
             <PropiedadesCard key={prop.id_propiedad} prop={prop} />
           ))}
 
-      <div className="flex justify-center gap-4 mt-6">
+      <div className="flex justify-center gap-4 my-6">
         <button
           className="px-4 py-2 btn"
           disabled={page === 1 || loading}
           onClick={() => setPage((p) => p - 1)}
         >
-          ← Anterior
+          Anterior
         </button>
 
         <span className="btn">
@@ -103,7 +103,7 @@ export default function PropiedadesList({ initialPage = 1, filtro, busqueda }) {
           disabled={page === totalPaginas || loading}
           onClick={() => setPage((p) => p + 1)}
         >
-          Siguiente →
+          Siguiente
         </button>
       </div>
     </div>

@@ -6,12 +6,10 @@ export default function CardCarousel({ children }) {
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    if (container.dataset.carouselInit === 'true') return;
-    container.dataset.carouselInit = 'true';
 
     const items = container.children.length;
     if (items <= 3) {
-      container.classList.add('xl:grid', 'xl:grid-cols-3', 'xl:overflow-visible', 'cursor-default');
+      container.classList.add('lg:grid', 'lg:grid-cols-3', 'lg:overflow-visible', 'cursor-default', "lg:place-items-center");
     }
 
     let isDown = false;
@@ -79,7 +77,7 @@ export default function CardCarousel({ children }) {
     <section className="overflow-visible">
       <div
         ref={containerRef}
-        className="carousel-scroll flex gap-4 snap-x snap-mandatory scroll-smooth overflow-x-auto p-4 cursor-grab"
+        className="carousel-scroll flex gap-6 snap-x snap-mandatory scroll-smooth overflow-x-auto px-1 py-4 cursor-grab"
       >
         {children}
       </div>

@@ -4,12 +4,12 @@ import PropiedadesApp from "../../components/PropiedadesApp.jsx";
 ---
 
 <BaseLayout title="Propiedades">
-  <main class="flex flex-col min-h-full px-3 sm:px-6 lg:px-8">
-    <section class="px-6 py-10 text-white flex items-center">
+  <main class="flex flex-col min-h-full px-6">
+    <section class="my-10 text-white flex items-center max-w-312 w-full mx-auto">
       <h1 class="text-5xl">Propiedades</h1>
     </section>
-    <div class="flex flex-1 flex-row gap-4 px-6 py-4">
+    <section class="flex flex-1 flex-row gap-4">
       <PropiedadesApp client:load/>
-    </div>
+    </section>
   </main>
 </BaseLayout>

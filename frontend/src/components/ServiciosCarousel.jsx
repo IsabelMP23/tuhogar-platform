@@ -17,13 +17,13 @@ export default function ServiciosCarousel() {
       .finally(() => setLoading(false));
   }, []);
 
-  const skeletons = Array.from({ length: 4 }).map((_, i) => (
+  const skeletons = Array.from({ length: 3 }).map((_, i) => (
     <ServicioCard key={i} loading />
   ));
 
   return (
-    <CardCarousel client:visible>
-      {loading ? skeletons : servicios.map((s) => <ServicioCard client:visible key={s.id_servicio} {...s} />)}
+    <CardCarousel >
+      {loading ? skeletons : servicios.map((s) => <ServicioCard  key={s.id_servicio} {...s} />)}
     </CardCarousel>
   );
 }

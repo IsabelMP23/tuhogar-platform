@@ -10,8 +10,8 @@ export default function SearchBar({busqueda, setBusqueda, filtro, setFiltro, ope
   };
 
   return (
-    <div className="flex flex-col md:flex-row lg:justify-between lg:items-center mb-4 mt-2 gap-5 lg:gap-10">
-      <label htmlFor="buscar" className="relative flex-1 max-w-md" aria-label="Barra de búsqueda">
+    <div className="flex flex-col w-full md:flex-row lg:justify-between lg:items-center mb-4 gap-5 lg:gap-10">
+      <label htmlFor="buscar" className="relative flex-1" aria-label="Barra de búsqueda">
         <input
           type="text"
           id="buscar"
@@ -29,13 +29,13 @@ export default function SearchBar({busqueda, setBusqueda, filtro, setFiltro, ope
       </label>
 
       <article className="flex flex-row gap-2">
-        <button type="button" className="rounded bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer" onClick={() => handleOrden("nuevos")}>
+        <button type="button" className="rounded flex-1 md:flex-none bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer" onClick={() => handleOrden("nuevos")}>
           Nuevos
         </button>
-        <button type="button" className="rounded bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer" onClick={() => handleOrden("precio_asc")}>
+        <button type="button" className="rounded flex-1 md:flex-none bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer" onClick={() => handleOrden("precio_asc")}>
           Precio ascendente
         </button>
-        <button type="button" className="rounded bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer" onClick={() => handleOrden("precio_desc")}>
+        <button type="button" className="rounded flex-1 md:flex-none bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer" onClick={() => handleOrden("precio_desc")}>
           Precio descendente
         </button>
         <button type="button" className="rounded bg-gray-200 px-2 py-1 hover:bg-gray-900 hover:text-white cursor-pointer lg:hidden" onClick={openFilters}>

@@ -6,16 +6,15 @@ export default function PropiedadCard({ propiedad, loading = false }) {
   }
   return (
     <a href={`/propiedades/${propiedad.id_propiedad}`}>
-      <div className="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col items-center h-80">
+      <div className="bg-white rounded-lg shadow-md min-w-[18rem] flex flex-col items-center h-80 hover:scale-105 transition-transform duration-300">
         <img
           src={`${propiedad.imagen_principal}?w=300&h=200&fit=crop&fm=webp`}
-          srcSet={`${propiedad.imagen_principal}?w=300&h=200&fit=crop&fm=webp 300w`}
           alt={propiedad.titulo}
           className="w-full h-48 object-cover rounded-t-md"
           loading="lazy"
         />
-        <article className="px-4 w-full">
-          <h3 className="text-lg font-bold mt-3">
+        <article className="px-4 py-1 w-full flex flex-col justify-around flex-1 ">
+          <h3 className="text-lg font-bold ">
             ${propiedad.precio.toLocaleString()} MXN
           </h3>
           <h4 className="text-md font-medium">{propiedad.titulo}</h4>
