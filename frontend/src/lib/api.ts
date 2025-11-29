@@ -39,3 +39,25 @@ export async function fetchServicios() {
   const data = await res.json();
   return data; 
 }
+
+export async function createContacto(contact: { nombre: string; correo: string; telefono: string; mensaje: string }) {
+  try {
+    const res = await fetch("https://tuhogar-platform-production.up.railway.app/api/contactos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(contact),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.error || "Error al crear contacto");
+    } 
+
+    return await res.json();
+  } catch (error) {
+    console.error("Error creando contacto:", error);
+    throw error;
+  }
+}
